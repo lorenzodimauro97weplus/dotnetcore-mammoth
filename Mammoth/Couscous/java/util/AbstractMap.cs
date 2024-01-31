@@ -31,7 +31,7 @@ namespace Mammoth.Couscous.java.util {
         public abstract Collection<TValue> values();
 	
         public abstract Optional<TValue> _lookup(TKey key);
-        public abstract System.Collections.Generic.IDictionary<TKey, TValue> AsDictionary();
+        public abstract IDictionary<TKey, TValue> AsDictionary();
         public abstract System.Collections.IDictionary AsUntypedDictionary();
     }
 }

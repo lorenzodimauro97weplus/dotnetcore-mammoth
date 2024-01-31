@@ -115,10 +115,10 @@ namespace Mammoth.Tests {
             }
         }
         
-        private static string StreamToBase64(System.IO.Stream stream) {
-            var memoryStream = new System.IO.MemoryStream();
+        private static string StreamToBase64(Stream stream) {
+            var memoryStream = new MemoryStream();
             stream.CopyTo(memoryStream);
-            return System.Convert.ToBase64String(memoryStream.ToArray());
+            return Convert.ToBase64String(memoryStream.ToArray());
         }
 
         [Fact]

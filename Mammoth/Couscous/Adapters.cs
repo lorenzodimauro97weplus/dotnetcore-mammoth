@@ -88,7 +88,7 @@ namespace Mammoth.Couscous {
             return new ArrayList<T>(list);
         }
         
-        internal static java.io.InputStream StreamToInputStream(System.IO.Stream stream) {
+        internal static InputStream StreamToInputStream(System.IO.Stream stream) {
             return new StreamToInputStreamAdapter(stream);
         }
         
@@ -100,11 +100,11 @@ namespace Mammoth.Couscous {
             }
         }
         
-        internal static java.util.Collection<T> CollectionToCollection<T>(ICollection<T> collection) {
+        internal static Collection<T> CollectionToCollection<T>(ICollection<T> collection) {
             return new CollectionToCollectionAdapter<T>(collection);
         }
         
-        private class CollectionToCollectionAdapter<T> : java.util.Collection<T> {
+        private class CollectionToCollectionAdapter<T> : Collection<T> {
             private readonly ICollection<T> _collection;
             
             internal CollectionToCollectionAdapter(ICollection<T> collection) {
@@ -124,7 +124,7 @@ namespace Mammoth.Couscous {
             }
             
             public Iterator<T> iterator() {
-                return ToJava.EnumeratorToIterator(_collection.GetEnumerator());
+                return EnumeratorToIterator(_collection.GetEnumerator());
             }
             
             public void add(T value) {

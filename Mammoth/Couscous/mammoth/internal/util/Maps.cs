@@ -47,7 +47,7 @@ namespace Mammoth.Couscous.org.zwobble.mammoth.@internal.util
             return ToJava.DictionaryToMap(dictionary);
         }
 
-        internal static Map<K, java.util.List<T>> toMultiMapWithKey<T, K>(Iterable<T> iterable, Function<T, K> function) {
+        internal static Map<K, List<T>> toMultiMapWithKey<T, K>(Iterable<T> iterable, Function<T, K> function) {
             var dictionary = FromJava.IterableToEnumerable(iterable)
                 .GroupBy(value => function.apply(value))
                 .ToDictionary(
@@ -56,7 +56,7 @@ namespace Mammoth.Couscous.org.zwobble.mammoth.@internal.util
             return ToJava.DictionaryToMap(dictionary);
         }
     
-        internal static Map<K, java.util.List<V>> toMultiMap<T, K, V>(Iterable<T> iterable, Function<T, Map__Entry<K, V>> function) {
+        internal static Map<K, List<V>> toMultiMap<T, K, V>(Iterable<T> iterable, Function<T, Map__Entry<K, V>> function) {
             var dictionary = FromJava.IterableToEnumerable(iterable)
                 .Select(element => function.apply(element))
                 .GroupBy(entry => entry.getKey())
@@ -95,8 +95,8 @@ namespace Mammoth.Couscous.org.zwobble.mammoth.@internal.util
             private readonly V _value;
             
             internal Entry(K key, V value) {
-                this._key = key;
-                this._value = value;
+                _key = key;
+                _value = value;
             }
             
             public K getKey() {
@@ -111,7 +111,7 @@ namespace Mammoth.Couscous.org.zwobble.mammoth.@internal.util
                 var other = otherObj as Entry<K, V>;
                 if (other == null) {
                     return false;
-                } else if (object.ReferenceEquals(this, other)) {
+                } else if (ReferenceEquals(this, other)) {
                     return true;
                 } else {
                     return _key.Equals(other._key) && _value.Equals(other._value);

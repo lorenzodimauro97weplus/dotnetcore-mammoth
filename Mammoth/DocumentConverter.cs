@@ -40,14 +40,14 @@ namespace Mammoth {
             return new DocumentConverter(options.imageConverter(new ImageConverterShim(imageConverter)));
         }
         
-        internal class ImageConverterShim : Mammoth.Couscous.org.zwobble.mammoth.images.ImageConverter__ImgElement {
+        internal class ImageConverterShim : Couscous.org.zwobble.mammoth.images.ImageConverter__ImgElement {
             private readonly Func<IImage, IDictionary<string, string>> func;
             
             internal ImageConverterShim(Func<IImage, IDictionary<string, string>> func) {
                 this.func = func;
             }
             
-            public Mammoth.Couscous.java.util.Map<string, string> convert(Mammoth.Couscous.org.zwobble.mammoth.images.Image image) {
+            public Couscous.java.util.Map<string, string> convert(Mammoth.Couscous.org.zwobble.mammoth.images.Image image) {
                 return ToJava.DictionaryToMap(func(new Image(image)));
             }
         }

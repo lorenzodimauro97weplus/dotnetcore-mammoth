@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 namespace Mammoth {
-    public interface IResult<T> {
+    public interface IResult<out T> {
         T Value { get; }
         ISet<string> Warnings { get; }
     }
